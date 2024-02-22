@@ -12,5 +12,7 @@ public class Product
 
 	private decimal Weight { get; set; }
 
+	private string Name { get; set; }
 
+	private decimal Price { get; set; }
 }

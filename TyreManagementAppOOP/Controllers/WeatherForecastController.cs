@@ -1,4 +1,12 @@
+using Dapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using TyreManagementAppOOP.Interfaces;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using TyreManagementAppOOP.Models;
+using TyreManagementAppOOP.Data;
 
 namespace TyreManagementAppOOP.Controllers
 {
@@ -28,6 +36,24 @@ namespace TyreManagementAppOOP.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        //[HttpGet("Anything")]
+        //public async Task<IEnumerable<Tyre>> Products()
+        //{
+        //    using var connection = new SqlConnection("Server=GBTK-MARSHALL\\SQLEXPRESS;Database=TyreManagementDatabase;Integrated Security=true;TrustServerCertificate=True;");
+
+        //    var products = await connection.QueryAsync<Tyre>("SELECT * FROM Tyre");
+        //    return products.ToList();
+
+        //}
+
+        [HttpGet("Anything")]
+        public async Task<IEnumerable<Tyre>> Products()
+        {
+            var query = ("SELECT * FROM Tyre");
+
+            return await DatabaseConnection.Instance.ExecuteQueryAsync<Tyre>(query);
         }
     }
 }
