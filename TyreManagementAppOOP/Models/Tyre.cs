@@ -34,13 +34,9 @@ namespace TyreManagementAppOOP.Models
 
         public string Type { get; set; }
 
-        public async Task<IEnumerable<Tyre>> GetProductInformation(int id)
+        public void GetProductInformation(int id)
         {
-            // Parameterisation to prevent injection attacks
-            var query = ("SELECT * FROM Tyre WHERE Id = @Id");
-            var idParam = new SqlParameter("Id", id);
 
-            return await DatabaseConnection.Instance.ExecuteQueryAsync<Tyre>(query, idParam);
         }
 
         public bool UpdateDetails(IProduct product)

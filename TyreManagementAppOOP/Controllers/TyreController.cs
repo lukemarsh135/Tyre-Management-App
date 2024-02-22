@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using TyreManagementAppOOP.Models;
 using TyreManagementAppOOP.Data;
+using TyreManagementAppOOP.Repositories;
 
 namespace TyreManagementAppOOP.Controllers
 {
@@ -14,18 +15,20 @@ namespace TyreManagementAppOOP.Controllers
     [Route("api/[controller]")]
     public sealed class TyreController : ControllerBase
     {
+        private readonly TyreRepository _tyreRepository;
+
+        public TyreController(TyreRepository tyreRepository)
+        {
+            _tyreRepository = tyreRepository;
+        }
         /// <summary>
         /// API for getting info for specific tyre
         /// </summary>
         /// <returns></returns>
         [HttpGet("getTyreDetails")]
-        public async Task<IEnumerable<Tyre>> GetProductInformation(int Id)
+        public IActionResult GetProductInformation(int Id)
         {
-            // Parameterisation to prevent injection attacks
-            var query = ("SELECT * FROM Tyre WHERE Id = @Id");
-            var idParam = new SqlParameter("Id", Id);
-
-            return await DatabaseConnection.Instance.ExecuteQueryAsync<Tyre>(query, idParam);
+            return Ok(_tyreRepository.GetProductInformation(Id));
         }
 
         /// <summary>
