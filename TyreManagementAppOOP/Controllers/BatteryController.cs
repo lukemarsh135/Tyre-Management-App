@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using TyreManagementAppOOP.Models;
 using TyreManagementAppOOP.Data;
+using TyreManagementAppOOP.Repositories;
 
 namespace TyreManagementAppOOP.Controllers
 {
@@ -14,17 +15,21 @@ namespace TyreManagementAppOOP.Controllers
     [Route("api/[controller]")]
     public sealed class BatteryController : ControllerBase
     {
-        private readonly Battery _battery;
+        private readonly BatteryRepository _batteryRepository;
 
+        public BatteryController(BatteryRepository batteryRepository)
+        {
+            _batteryRepository = batteryRepository;
+        }
 
         /// <summary>
         /// API for getting info for specific battery
         /// </summary>
         /// <returns></returns>
         [HttpGet("getBatteryDetails")]
-        public IActionResult GetProductInformation(int Id)
+        public async Task<IActionResult> GetProductInformation(int Id)
         {
-            return Ok(_battery.GetProductInformation(Id));
+            return Ok(await _batteryRepository.GetProductInformation(Id));
         }
 
         /// <summary>
@@ -54,11 +59,9 @@ namespace TyreManagementAppOOP.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("getAllBatteryDetails")]
-        public async Task<IEnumerable<Battery>> GetAllProductsInformation()
+        public async Task<IActionResult> GetAllProductsInformation()
         {
-            var query = ("SELECT * FROM Battery");
-
-            return await DatabaseConnection.Instance.ExecuteQueryAsync<Battery>(query);
+            return Ok(await _batteryRepository.GetAllProductsInformation());
         }
 
     }

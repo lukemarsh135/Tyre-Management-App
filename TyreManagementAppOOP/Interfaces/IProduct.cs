@@ -4,7 +4,7 @@ namespace TyreManagementAppOOP.Interfaces
 {
     public interface IProduct
     {
-        Task<IEnumerable<T>> GetProductInformation<T>(int id);
+        void GetProductInformation(int id);
 
         bool UpdateDetails(IProduct product);
 

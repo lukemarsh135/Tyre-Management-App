@@ -38,16 +38,6 @@ namespace TyreManagementAppOOP.Controllers
             .ToArray();
         }
 
-        //[HttpGet("Anything")]
-        //public async Task<IEnumerable<Tyre>> Products()
-        //{
-        //    using var connection = new SqlConnection("Server=GBTK-MARSHALL\\SQLEXPRESS;Database=TyreManagementDatabase;Integrated Security=true;TrustServerCertificate=True;");
-
-        //    var products = await connection.QueryAsync<Tyre>("SELECT * FROM Tyre");
-        //    return products.ToList();
-
-        //}
-
         [HttpGet("Anything")]
         public async Task<IEnumerable<Tyre>> Products()
         {
