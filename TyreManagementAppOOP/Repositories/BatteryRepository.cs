@@ -15,5 +15,12 @@ namespace TyreManagementAppOOP.Repositories
 
             return await DatabaseConnection.Instance.ExecuteQueryAsync<Battery>(query, idParam);
         }
+
+        public async Task<IEnumerable<Battery>> GetAllProductsInformation()
+        {
+            var query = ("SELECT * FROM Battery");
+
+            return await DatabaseConnection.Instance.ExecuteQueryAsync<Battery>(query);
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace TyreManagementAppOOP.Data
         // This code was influenced and adapted from the YouTube video https://www.youtube.com/watch?v=aU_hRoob82A and the following web pages on generic functions:
         // https://stackoverflow.com/questions/2144495/creating-a-generic-method-in-c-sharp, https://www.programiz.com/csharp-programming/generics. I also had
         // guidance from colleagues.
-        // It tought me the fundamentals of implementing the singleton design pattern in in the context of a database connection, as well as generic function and 
+        // It taught me the fundamentals of implementing the singleton design pattern in in the context of a database connection, as well as generic function and 
         // how map values to the class fields
 
 
@@ -56,6 +56,24 @@ namespace TyreManagementAppOOP.Data
         return resultList;
 
         }
+
+        public async Task<int> ExecuteNonQueryAsync(string query, params SqlParameter[] parameters)
+        {
+            using var connection = new SqlConnection(connectionString);
+
+            await connection.OpenAsync();
+
+            using var command = new SqlCommand(query, connection);
+
+            // Add parameters to the command if any
+            if (parameters != null)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            return await command.ExecuteNonQueryAsync();
+        }
+
 
         // Adapted from https://mazeez.dev/posts/how-orms-work
         private void MapData<T>(SqlDataReader reader, T obj) where T : new()

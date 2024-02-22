@@ -26,9 +26,9 @@ namespace TyreManagementAppOOP.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("getTyreDetails")]
-        public IActionResult GetProductInformation(int Id)
+        public async Task<IActionResult> GetProductInformation(int Id)
         {
-            return Ok(_tyreRepository.GetProductInformation(Id));
+            return Ok(await _tyreRepository.GetProductInformation(Id));
         }
 
         /// <summary>
@@ -36,10 +36,9 @@ namespace TyreManagementAppOOP.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("addTyre")]
-        public IActionResult AddNewProduct(IProduct tyre)
+        public IActionResult AddNewProduct(Tyre tyre)
         {
-            // Add new tyre
-            return Ok(tyre);
+            return Ok(_tyreRepository.AddNewProduct(tyre));
         }
 
         /// <summary>
@@ -47,22 +46,18 @@ namespace TyreManagementAppOOP.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPut("update")]
-        public IActionResult UpdateDetails (IProduct tyre)
+        public async Task<IActionResult> UpdateDetails(Tyre tyre)
         {
-            // Updating existing tyre
-            return Ok(tyre);
+            return Ok(await _tyreRepository.UpdateDetails(tyre));
         }
-
         /// <summary>
         /// API for getting info for all tyres
         /// </summary>
         /// <returns></returns>
         [HttpGet("getAllTyreDetails")]
-        public async Task<IEnumerable<Tyre>> GetAllProductsInformation()
+        public async Task<IActionResult> GetAllProductsInformation()
         {
-            var query = ("SELECT * FROM Tyre");
-
-            return await DatabaseConnection.Instance.ExecuteQueryAsync<Tyre>(query);
+            return Ok(await _tyreRepository.GetAllProductsInformation());
         }
     }
 }

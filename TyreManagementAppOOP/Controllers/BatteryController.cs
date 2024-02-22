@@ -59,11 +59,9 @@ namespace TyreManagementAppOOP.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("getAllBatteryDetails")]
-        public async Task<IEnumerable<Battery>> GetAllProductsInformation()
+        public async Task<IActionResult> GetAllProductsInformation()
         {
-            var query = ("SELECT * FROM Battery");
-
-            return await DatabaseConnection.Instance.ExecuteQueryAsync<Battery>(query);
+            return Ok(await _batteryRepository.GetAllProductsInformation());
         }
 
     }
