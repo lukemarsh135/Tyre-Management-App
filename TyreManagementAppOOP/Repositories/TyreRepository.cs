@@ -83,7 +83,11 @@ namespace TyreManagementAppOOP.Repositories
                 new SqlParameter("@Id", tyre.Id)
             };
 
-            return await DatabaseConnection.Instance.ExecuteNonQueryAsync(query, parameters) > 0;
+            if (await DatabaseConnection.Instance.ExecuteNonQueryAsync(query, parameters) > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
