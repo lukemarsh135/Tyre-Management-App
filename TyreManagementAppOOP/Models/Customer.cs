@@ -20,16 +20,23 @@ namespace TyreManagementAppOOP.Models
 
         public string? Phone {  get; set; }
 
+        public bool UpdateCustomer(string id)
+        {
+            // Update customer
+            return true;
+        }
+
+        public bool AddNewCustomer(Customer customer) 
+        {
+            return true;
+        }
+
         public IEnumerable<Customer> GetAllCustomers()
         {
             // Get pervious sales from database
             return Enumerable.Empty<Customer>();
         }
 
-        public bool UpdateCustomer(Customer customer)
-        {
-            // Update customer
-            return true;
-        }
+
     }
 }

@@ -80,10 +80,9 @@ namespace TyreManagementAppOOP.Data
         {
             var properties = typeof(T).GetProperties();
 
-            // For each field in the class T  map the name to the reader and then 
+            // For each field in the class T, map the name to the reade
             foreach (var property in properties)
             {
-                
                 if (HasColumn(reader, property.Name))
                 {
                     // Retrieves value from current column
