@@ -36,9 +36,9 @@ namespace TyreManagementAppOOP.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("addTyre")]
-        public IActionResult AddNewProduct(Tyre tyre)
+        public async Task<IActionResult> AddNewProduct(Tyre tyre)
         {
-            return Ok(_tyreRepository.AddNewProduct(tyre));
+            return Ok(await _tyreRepository.AddNewProduct(tyre));
         }
 
         /// <summary>

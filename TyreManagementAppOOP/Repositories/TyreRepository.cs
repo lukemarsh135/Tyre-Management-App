@@ -23,7 +23,7 @@ namespace TyreManagementAppOOP.Repositories
             return await DatabaseConnection.Instance.ExecuteQueryAsync<Tyre>(query);
         }
 
-        public async Task<int> AddNewProduct(Tyre tyre)
+        public async Task<bool> AddNewProduct(Tyre tyre)
         {
             var query = @"
                 INSERT INTO Tyre (Model, Quantity, Brand, Weight, Name, Price, Width, AspectRatio, Diameter, LoadRating, SpeedRating, Type)
@@ -45,10 +45,10 @@ namespace TyreManagementAppOOP.Repositories
                 new SqlParameter("@Type", tyre.Type)
             };
 
-            return await DatabaseConnection.Instance.ExecuteNonQueryAsync(query, parameters);
+            return await DatabaseConnection.Instance.ExecuteNonQueryAsync(query, parameters) > 0;
         }
 
-        public async Task<int> UpdateDetails(Tyre tyre)
+        public async Task<bool> UpdateDetails(Tyre tyre)
         {
             var query = @"
                 UPDATE Tyre
@@ -83,7 +83,7 @@ namespace TyreManagementAppOOP.Repositories
                 new SqlParameter("@Id", tyre.Id)
             };
 
-            return await DatabaseConnection.Instance.ExecuteNonQueryAsync(query, parameters);
+            return await DatabaseConnection.Instance.ExecuteNonQueryAsync(query, parameters) > 0;
         }
     }
 }
