@@ -37,10 +37,9 @@ namespace TyreManagementAppOOP.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("addBattery")]
-        public IActionResult AddNewProduct(IProduct battery)
+        public async Task<IActionResult> AddNewProduct(Battery battery)
         {
-            // Add new tyre
-            return Ok(battery);
+            return Ok(await _batteryRepository.AddNewProduct(battery));
         }
 
         /// <summary>
@@ -48,10 +47,9 @@ namespace TyreManagementAppOOP.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPut("update")]
-        public IActionResult UpdateDetails(IProduct battery)
+        public async Task<IActionResult> UpdateDetails(Battery battery)
         {
-            
-            return Ok(battery);
+            return Ok(await _batteryRepository.UpdateDetails(battery));
         }
 
         /// <summary>
