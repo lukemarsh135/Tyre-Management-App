@@ -16,6 +16,6 @@
 
         public decimal Price { get; set; }
 
-        internal string TypeOfProduct { get; set; }
+        public string TypeOfProduct { get; set; }
     }
 }

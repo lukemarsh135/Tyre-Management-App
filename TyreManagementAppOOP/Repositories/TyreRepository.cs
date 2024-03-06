@@ -38,10 +38,10 @@ namespace TyreManagementAppOOP.Repositories
                 new SqlParameter("@Name", tyre.Name),
                 new SqlParameter("@Price", tyre.Price),
                 new SqlParameter("@Width", tyre.Width),
-                new SqlParameter("@AspectRatio", tyre.aspectRatio),
+                new SqlParameter("@AspectRatio", tyre.AspectRatio),
                 new SqlParameter("@Diameter", tyre.Diameter),
-                new SqlParameter("@LoadRating", tyre.loadRating),
-                new SqlParameter("@SpeedRating", tyre.speedRating),
+                new SqlParameter("@LoadRating", tyre.LoadRating),
+                new SqlParameter("@SpeedRating", tyre.SpeedRating),
                 new SqlParameter("@Type", tyre.Type)
             };
 
@@ -75,10 +75,10 @@ namespace TyreManagementAppOOP.Repositories
                 new SqlParameter("@Name", tyre.Name),
                 new SqlParameter("@Price", tyre.Price),
                 new SqlParameter("@Width", tyre.Width),
-                new SqlParameter("@AspectRatio", tyre.aspectRatio),
+                new SqlParameter("@AspectRatio", tyre.AspectRatio),
                 new SqlParameter("@Diameter", tyre.Diameter),
-                new SqlParameter("@LoadRating", tyre.loadRating),
-                new SqlParameter("@SpeedRating", tyre.speedRating),
+                new SqlParameter("@LoadRating", tyre.LoadRating),
+                new SqlParameter("@SpeedRating", tyre.SpeedRating),
                 new SqlParameter("@Type", tyre.Type),
                 new SqlParameter("@Id", tyre.Id)
             };

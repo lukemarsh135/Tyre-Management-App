@@ -26,7 +26,7 @@ namespace TyreManagementAppOOP.Models
 
         public decimal Capacity { get; set; }
 
-        public decimal startupPower { get; set; }
+        public decimal StartupPower { get; set; }
 
 
         public void GetProductInformation(int id)
@@ -34,20 +34,19 @@ namespace TyreManagementAppOOP.Models
            
         }
 
-        public bool UpdateDetails(IProduct product)
+        public void UpdateDetails(IProduct product)
         {
             // Update database
-            return false;
         }
 
-        public bool AddNewProduct(IProduct product)
+        public void AddNewProduct(IProduct product)
         {
-            return true;
+
         }
 
         public void GetAllProductsInformation()
         {
-            // Get details from database for all batteries
+            
         }
     }
 }

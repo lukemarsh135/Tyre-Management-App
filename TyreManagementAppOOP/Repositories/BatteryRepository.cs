@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
+using TyreManagementAppOOP.Actions;
 using TyreManagementAppOOP.Data;
 using TyreManagementAppOOP.Models;
 
@@ -7,7 +8,6 @@ namespace TyreManagementAppOOP.Repositories
 {
     public class BatteryRepository
     {
-        //private readonly Battery _battery;
         public async Task<IEnumerable<Battery>> GetProductInformation(int id)
         {
             // Parameterisation to prevent injection attacks
@@ -40,7 +40,7 @@ namespace TyreManagementAppOOP.Repositories
                 new SqlParameter("@Price", battery.Price),
                 new SqlParameter("@Voltage", battery.Voltage),
                 new SqlParameter("@Capacity", battery.Capacity),
-                new SqlParameter("@StartupPower", battery.startupPower),
+                new SqlParameter("@StartupPower", battery.StartupPower),
             };
 
             return await DatabaseConnection.Instance.ExecuteNonQueryAsync(query, parameters) > 0;
@@ -71,7 +71,7 @@ namespace TyreManagementAppOOP.Repositories
                 new SqlParameter("@Price", battery.Price),
                 new SqlParameter("@Voltage", battery.Voltage),
                 new SqlParameter("@Capacity", battery.Capacity),
-                new SqlParameter("@StartupPower", battery.startupPower),
+                new SqlParameter("@StartupPower", battery.StartupPower),
                 new SqlParameter("@Id", battery.Id)
             };
 

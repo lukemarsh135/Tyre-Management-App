@@ -3,11 +3,11 @@ using TyreManagementAppOOP.Models;
 
 namespace TyreManagementAppOOP.Commands
 {
-    public abstract class WorkOrderCommand : IWorkOrder
+    public abstract class SavedSaleCommand : ISavedSale
     {
         protected readonly Sale Sale;
 
-        public WorkOrderCommand(Sale sale)
+        public SavedSaleCommand(Sale sale)
         {
             Sale = sale;
         }

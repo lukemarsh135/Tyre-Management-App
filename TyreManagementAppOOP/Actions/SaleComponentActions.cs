@@ -3,30 +3,11 @@ using TyreManagementAppOOP.Models;
 
 namespace TyreManagementAppOOP.Actions
 {
-    public class SaleComponentActions : ISale
+    public class SaleComponentActions : BaseSaleActions
     {
-        public bool AddProductToOrder(Product product)
+        public void SaveSale(Order order)
         {
-            // logic to add product to order
-            return true;
-        }
-
-        public bool CancelOrder(Sale sale)
-        {
-            // logic to cancel the order
-            return true;
-        }
-
-        public bool ProceedToWorkOrder()
-        {
-            // logic to generate work order
-            return true;
-        }
-
-        public bool RemoveProduct(Product product)
-        {
-            // logic to removing project from order
-            return true;
+            // Send all products to controller to save to database
         }
     }
 }

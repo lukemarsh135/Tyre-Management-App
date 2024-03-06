@@ -2,7 +2,7 @@
 
 namespace TyreManagementAppOOP.Interfaces
 {
-    public interface IWorkOrder
+    public interface ISavedSale
     {
         void Execute();
     }

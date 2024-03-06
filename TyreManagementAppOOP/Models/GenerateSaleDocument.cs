@@ -3,18 +3,18 @@ using TyreManagementAppOOP.Interfaces;
 
 namespace TyreManagementAppOOP.Models
 {
-    public class GenerateWorkOrderDocument : WorkOrderCommand
+    public class GenerateSaleDocument : SavedSaleCommand
     {
         private readonly string _filePath;
 
-        public GenerateWorkOrderDocument(Sale sale, string filePath) : base(sale)
+        public GenerateSaleDocument(Sale sale, string filePath) : base(sale)
         {
             _filePath = filePath;
         }
 
         public override void Execute()
         {
-            // Logic to format and write work order data to a file
+            // Logic to format and write sale data to a file
         }
     }
 }
