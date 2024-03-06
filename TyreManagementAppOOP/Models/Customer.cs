@@ -6,37 +6,40 @@ namespace TyreManagementAppOOP.Models
     {
         public int Id { get; set; }
 
-        public string firstName { get; set; }
+        public string FirstName { get; set; }
 
-        public string? lastName { get; set; }
+        public string? LastName { get; set; }
 
-        public string? houseNumAndStreet { get; set; }
+        public string? HouseOrApartmentNum { get; set; }
 
-        public string? townOrCity { get; set; }
+        public string Street {  get; set; }
 
-        public string? postcode { get; set; }
+        public string? TownOrCity { get; set; }
 
-        public List<Transactions> orderHistory { get; set; }
+        public string? Postcode { get; set; }
+
+        //public List<Transactions> OrderHistory { get; set; }
 
         public string? Phone {  get; set; }
 
-        public bool UpdateCustomer(string id)
+        public void UpdateCustomer(Customer customer)
         {
-            // Update customer
-            return true;
+            
         }
 
-        public bool AddNewCustomer(Customer customer) 
+        public void AddNewCustomer(Customer customer) 
         {
-            return true;
+           
         }
 
-        public IEnumerable<Customer> GetAllCustomers()
+        public void GetAllCustomers()
         {
-            // Get pervious sales from database
-            return Enumerable.Empty<Customer>();
+
         }
 
+        public void GetCustomer(int id)
+        {
 
+        }
     }
 }

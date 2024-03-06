@@ -24,13 +24,13 @@ namespace TyreManagementAppOOP.Models
         // Unique product properties
         public int Width { get; set; }
 
-        public int aspectRatio { get; set; }
+        public int AspectRatio { get; set; }
 
         public int Diameter { get; set; }
 
-        public int loadRating { get; set; }
+        public int LoadRating { get; set; }
 
-        public int speedRating { get; set; }
+        public string SpeedRating { get; set; }
 
         public string Type { get; set; }
 
@@ -39,16 +39,14 @@ namespace TyreManagementAppOOP.Models
 
         }
 
-        public bool UpdateDetails(IProduct product)
+        public void UpdateDetails(IProduct product)
         {
             // Update database
-            return true;
         }
 
-        public bool AddNewProduct(IProduct product)
+        public void AddNewProduct(IProduct product)
         {
             // Add new product to database
-            return true;
         }
 
         public void GetAllProductsInformation()

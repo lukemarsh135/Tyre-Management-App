@@ -1,35 +1,26 @@
 ﻿using TyreManagementAppOOP.Interfaces;
 using TyreManagementAppOOP.Models;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace TyreManagementAppOOP.Actions
 {
-    public class SaleCompositeActions : ISale
+    public class SaleCompositeActions : BaseSaleActions, ISale
     {
-        public List<Product> Products { get; set; }
+        public List<Product> productsInOrder { get; set; }
 
-
-        public bool AddProductToOrder(Product product)
+        public void SortProducts(List<Product> products)
         {
-            // logic to add product to order
-            return true;
+            // Sort products by some attribute (id, brand etc)
         }
 
-        public bool CancelOrder(Sale sale)
+        public void SaveSale(Order order)
         {
-            // logic to cancel the order
-            return true;
+            BaseSaleActions baseSaleActions = new BaseSaleActions();
+
+            baseSaleActions.SaveSale(order);
         }
 
-        public bool ProceedToWorkOrder()
-        {
-            // logic to generate work order
-            return true;
-        }
-
-        public bool RemoveProduct(Product product)
-        {
-            // logic to removing project from order
-            return true;
-        }
     }
 }

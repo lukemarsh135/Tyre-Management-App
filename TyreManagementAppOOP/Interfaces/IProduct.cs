@@ -6,9 +6,9 @@ namespace TyreManagementAppOOP.Interfaces
     {
         void GetProductInformation(int id);
 
-        bool UpdateDetails(IProduct product);
+        void UpdateDetails(IProduct product);
 
-        bool AddNewProduct(IProduct product);
+        void AddNewProduct(IProduct product);
 
         void GetAllProductsInformation();
     }

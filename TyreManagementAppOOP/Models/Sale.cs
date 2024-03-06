@@ -14,23 +14,5 @@ namespace TyreManagementAppOOP.Models
         public OrderLine WorkOrderLines { get; set; }
 
         public int CustomerId { get; set; }
-
-        public bool AddProductToOrder(Product product)
-        {
-            // logic to add product to order
-            return true;
-        }
-
-        public bool CancelOrder(Sale sale)
-        {
-            // logic to cancel the order
-            return true;
-        }
-
-        public bool ProceedToWorkOrder()
-        {
-            // logic to generate work order
-            return true;
-        }
     }
 }

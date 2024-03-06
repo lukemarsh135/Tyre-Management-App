@@ -23,8 +23,9 @@ namespace TyreManagementAppOOP.Controllers
         }
 
         /// <summary>
-        /// API for getting info for specific battery
+        /// API for getting details for a specific battery
         /// </summary>
+        /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("getBatteryDetails")]
         public async Task<IActionResult> GetProductInformation(int Id)
@@ -35,6 +36,7 @@ namespace TyreManagementAppOOP.Controllers
         /// <summary>
         /// API for adding a new battery
         /// </summary>
+        /// <param name="battery"></param>
         /// <returns></returns>
         [HttpPost("addBattery")]
         public async Task<IActionResult> AddNewProduct(Battery battery)
@@ -45,6 +47,7 @@ namespace TyreManagementAppOOP.Controllers
         /// <summary>
         /// API for updating a specific battery
         /// </summary>
+        /// <param name="battery"></param>
         /// <returns></returns>
         [HttpPut("update")]
         public async Task<IActionResult> UpdateDetails(Battery battery)
@@ -61,6 +64,5 @@ namespace TyreManagementAppOOP.Controllers
         {
             return Ok(await _batteryRepository.GetAllProductsInformation());
         }
-
     }
 }

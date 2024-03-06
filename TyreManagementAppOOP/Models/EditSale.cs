@@ -3,13 +3,13 @@ using TyreManagementAppOOP.Interfaces;
 
 namespace TyreManagementAppOOP.Models
 {
-    public abstract class GenerateWorkOrder : WorkOrderCommand
+    public class EditSale : SavedSaleCommand
     {
-        public GenerateWorkOrder(Sale sale) : base(sale) { }
+        public EditSale(Sale sale) : base(sale) { }
 
         public override void Execute()
         {
-            // Logic to generate the work order based on Sale data
+            // Logic to edit a saved sale
         }
     }
 }

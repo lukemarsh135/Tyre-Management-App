@@ -7,10 +7,14 @@ namespace TyreManagementAppOOP.Models
         // 'Transactions' aggregates 'Sale' by having  a list of 'sale' as its property
         public List<Sale> Sales { get; set; }
 
-        public IEnumerable<Sale> GetPreviousSales()
+        public void GetTransactions()
         {
-            // Get pervious sales from database
-            return Enumerable.Empty<Sale>();
+            
+        }
+
+        public void GetTransaction()
+        {
+
         }
     }
 }
