@@ -38,7 +38,15 @@ namespace TyreManagementAppOOP.Controllers
         [HttpPost("addTyre")]
         public async Task<IActionResult> AddNewProduct(Tyre tyre)
         {
-            return Ok(await _tyreRepository.AddNewProduct(tyre));
+            try
+            {
+                return Ok(await _tyreRepository.AddNewProduct(tyre));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
         }
 
         /// <summary>
@@ -48,7 +56,15 @@ namespace TyreManagementAppOOP.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> UpdateDetails(Tyre tyre)
         {
-            return Ok(await _tyreRepository.UpdateDetails(tyre));
+            try
+            {
+               return Ok(await _tyreRepository.UpdateDetails(tyre)); 
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
         }
         /// <summary>
         /// API for getting info for all tyres

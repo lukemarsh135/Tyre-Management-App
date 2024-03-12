@@ -41,7 +41,14 @@ namespace TyreManagementAppOOP.Controllers
         [HttpPost("addBattery")]
         public async Task<IActionResult> AddNewProduct(Battery battery)
         {
-            return Ok(await _batteryRepository.AddNewProduct(battery));
+            try 
+            {
+                return Ok(await _batteryRepository.AddNewProduct(battery));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         /// <summary>
@@ -52,7 +59,14 @@ namespace TyreManagementAppOOP.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> UpdateDetails(Battery battery)
         {
-            return Ok(await _batteryRepository.UpdateDetails(battery));
+            try 
+            {
+                return Ok(await _batteryRepository.UpdateDetails(battery));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         /// <summary>

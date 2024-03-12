@@ -1,20 +1,37 @@
-﻿using TyreManagementAppOOP.Commands;
-using TyreManagementAppOOP.Interfaces;
+﻿using TyreManagementAppOOP.Interfaces;
 
 namespace TyreManagementAppOOP.Models
 {
-    public class GenerateSaleDocument : SavedSaleCommand
+    public class GenerateSaleDocument 
     {
         private readonly string _filePath;
 
-        public GenerateSaleDocument(Sale sale, string filePath) : base(sale)
+        public GenerateSaleDocument(Sale sale, string filePath) 
         {
             _filePath = filePath;
         }
 
-        public override void Execute()
+        public void GenerateDocument(Sale sale)
         {
-            // Logic to format and write sale data to a file
+            string formattedData = FormatSaleData(sale);
+
+            using (FileStream fs = File.Open(_filePath, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(fs))
+                {
+                    writer.Write(formattedData);
+                }
+            }
+        }
+
+        private string FormatSaleData(Sale sale)
+        {
+            // Build a string with sale information
+            string data = $"Sale ID: {sale.Id}\n";
+            data += $"Customer: {sale.CustomerId}\n";
+            data += $"Date and time: {sale.DateAndTime}\n";
+
+            return data;
         }
     }
 }

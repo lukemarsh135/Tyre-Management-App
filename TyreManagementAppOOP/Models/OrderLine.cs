@@ -2,14 +2,10 @@
 {
     public class OrderLine
     {
-        public int DocumenntId { get; set; }
+        public int SaleId { get; set; }
 
-        public int lineId { get; set; }
+        public int LineId { get; set; }
 
-        public List<Product> productName { get; set; }
-
-        public int ProductQuantity { get; set; }
-
-        public double TotalCost { get; set; }
+        public List<Product> Product { get; set; }
     }
 }

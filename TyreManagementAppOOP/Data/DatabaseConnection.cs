@@ -53,10 +53,31 @@ namespace TyreManagementAppOOP.Data
                 resultList.Add(obj);
             }
             
-        return resultList;
+            return resultList;
 
         }
 
+        // For getting a single result from the database.
+        public async Task<object> ExecuteScalarAsync(string query, params SqlParameter[] parameters)
+        {
+            using var connection = new SqlConnection(connectionString);
+
+            await connection.OpenAsync();
+
+            using var command = new SqlCommand(query, connection);
+
+            // Add parameters to the command if any
+            if (parameters != null)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            // Execute the scalar query and return the result
+            return await command.ExecuteScalarAsync();
+        }
+
+
+        // For updating/adding to database
         public async Task<int> ExecuteNonQueryAsync(string query, params SqlParameter[] parameters)
         {
             using var connection = new SqlConnection(connectionString);
