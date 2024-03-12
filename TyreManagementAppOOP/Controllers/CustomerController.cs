@@ -34,7 +34,14 @@ namespace TyreManagementAppOOP.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> UpdateCustomer(Customer customer)
         {
-            return Ok(await _customerRepository.UpdateCustomer(customer));
+            try
+            {
+                return Ok(await _customerRepository.UpdateCustomer(customer));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         /// <summary>
@@ -45,7 +52,14 @@ namespace TyreManagementAppOOP.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> AddNewCustomer(Customer customer)
         {
-            return Ok(await _customerRepository.AddNewCustomer(customer));
+            try
+            {
+                return Ok(await _customerRepository.AddNewCustomer(customer));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         /// <summary>

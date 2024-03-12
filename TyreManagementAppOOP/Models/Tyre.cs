@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using TyreManagementAppOOP.Controllers;
 using TyreManagementAppOOP.Data;
 using TyreManagementAppOOP.Interfaces;
 
@@ -36,12 +37,12 @@ namespace TyreManagementAppOOP.Models
 
         public void GetProductInformation(int id)
         {
-
+            
         }
 
         public void UpdateDetails(IProduct product)
         {
-            // Update database
+            
         }
 
         public void AddNewProduct(IProduct product)
