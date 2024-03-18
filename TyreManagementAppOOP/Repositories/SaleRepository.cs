@@ -26,7 +26,6 @@ namespace TyreManagementAppOOP.Repositories
             {
                 throw ex;
             }
-
             
         }
 
@@ -74,6 +73,41 @@ namespace TyreManagementAppOOP.Repositories
 
                 await DatabaseConnection.Instance.ExecuteNonQueryAsync(query, parameters);
             }   
+        }
+
+        public async Task<IEnumerable<CombinedTransaction>> GetAllTransactions()
+        {
+            var query = ("SELECT t.*, ti.* " +
+               "FROM Transactions t " +
+               "INNER JOIN TransactionItems ti ON t.SaleId = ti.SaleId ");
+
+            return await DatabaseConnection.Instance.ExecuteQueryAsync<CombinedTransaction>(query);
+        }
+
+        public async Task<IEnumerable<CombinedTransaction>> GetTransactionBySaleId(int id)
+        {
+            var query = ("SELECT t.*, ti.* " +
+               "FROM Transactions t " +
+               "INNER JOIN TransactionItems ti ON t.SaleId = ti.SaleId " +
+               "WHERE t.SaleId = @Id");
+
+            // Parameterisation to prevent injection attacks
+            var idParam = new SqlParameter("Id", id);
+
+            return await DatabaseConnection.Instance.ExecuteQueryAsync<CombinedTransaction>(query, idParam);
+        }
+
+        public async Task<IEnumerable<CombinedTransaction>> GetTransactionByCustomer(int id)
+        {
+            var query = ("SELECT t.*, ti.* " +
+               "FROM Transactions t " +
+               "INNER JOIN TransactionItems ti ON t.SaleId = ti.SaleId " +
+               "WHERE t.CustomerId = @Id");
+
+            // Parameterisation to prevent injection attacks
+            var idParam = new SqlParameter("Id", id);
+
+            return await DatabaseConnection.Instance.ExecuteQueryAsync<CombinedTransaction>(query, idParam);
         }
     }
 }

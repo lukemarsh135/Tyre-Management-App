@@ -36,21 +36,57 @@ namespace TyreManagementAppOOP.Controllers
             }
         }
 
-        ///// <summary>
-        ///// API for editing an existing sale
-        ///// </summary>
-        ///// <returns></returns>
-        //[HttpPost("edit")]
-        //public async Task<IActionResult> EditeSale()
-        //{
-        //    try
-        //    {
-        //        return Ok(await _saleRepository.EditSale());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, ex.Message);
-        //    }
-        //}
+        /// <summary>
+        /// API for getting all previous transaction
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("getAllTransactions")]
+        public async Task<IActionResult> GetAllTransactions()
+        {
+            try
+            {
+                return Ok(await _saleRepository.GetAllTransactions());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// API for getting a transaction by it's sale id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("getTransactionBySaleId")]
+        public async Task<IActionResult> GetTransactionBySaleId(int id)
+        {
+            try
+            {
+                return Ok(await _saleRepository.GetTransactionBySaleId(id));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// API for getting a transaction by customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("getTransactionByCustomer")]
+        public async Task<IActionResult> GetTransactionByCustomer(int id)
+        {
+            try
+            {
+                return Ok(await _saleRepository.GetTransactionByCustomer(id));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
