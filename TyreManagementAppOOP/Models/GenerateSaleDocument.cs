@@ -27,7 +27,7 @@ namespace TyreManagementAppOOP.Models
         private string FormatSaleData(Sale sale)
         {
             // Build a string with sale information
-            string data = $"Sale ID: {sale.Id}\n";
+            string data = $"Sale ID: {sale.SaleId}\n";
             data += $"Customer: {sale.CustomerId}\n";
             data += $"Date and time: {sale.DateAndTime}\n";
 

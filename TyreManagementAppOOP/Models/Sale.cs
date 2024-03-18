@@ -4,7 +4,7 @@ namespace TyreManagementAppOOP.Models
 {
     public class Sale
     {
-        public int Id { get; set; }
+        public int SaleId { get; set; }
 
         public DateTime DateAndTime { get; set; }
 
