@@ -10,7 +10,7 @@ namespace TyreManagementAppOOP.Repositories
         public async Task<IEnumerable<Battery>> GetProductInformation(int id)
         {
             // Parameterisation to prevent injection attacks
-            var query = ("SELECT * FROM Battery WHERE Id = @Id");
+            var query = "SELECT * FROM Battery WHERE Id = @Id";
             var idParam = new SqlParameter("Id", id);
 
             return await DatabaseConnection.Instance.ExecuteQueryAsync<Battery>(query, idParam);
@@ -18,7 +18,7 @@ namespace TyreManagementAppOOP.Repositories
 
         public async Task<IEnumerable<Battery>> GetAllProductsInformation()
         {
-            var query = ("SELECT * FROM Battery");
+            var query = "SELECT * FROM Battery";
 
             return await DatabaseConnection.Instance.ExecuteQueryAsync<Battery>(query);
         }

@@ -1,12 +1,5 @@
-﻿using Dapper;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using System.Reflection.Metadata.Ecma335;
-using TyreManagementAppOOP.Interfaces;
-using System.Data.SqlClient;
-using System.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using TyreManagementAppOOP.Models;
-using TyreManagementAppOOP.Data;
 using TyreManagementAppOOP.Repositories;
 
 namespace TyreManagementAppOOP.Controllers
