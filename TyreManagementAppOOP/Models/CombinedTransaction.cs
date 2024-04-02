@@ -2,7 +2,6 @@
 {
     public class CombinedTransaction
     {
-
         // Template for returning transactions
         public int TransactionItemId { get; set; }
         public int SaleId { get; set; }

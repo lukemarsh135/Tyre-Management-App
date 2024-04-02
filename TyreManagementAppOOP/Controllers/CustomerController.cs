@@ -32,7 +32,7 @@ namespace TyreManagementAppOOP.Controllers
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPut("update")]
-        public async Task<IActionResult> UpdateCustomer(Customer customer)
+        public async Task<IActionResult> UpdateCustomer(ICustomer customer)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace TyreManagementAppOOP.Controllers
         /// <param name="battery"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        public async Task<IActionResult> AddNewCustomer(Customer customer)
+        public async Task<IActionResult> AddNewCustomer(ICustomer customer)
         {
             try
             {

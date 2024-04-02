@@ -1,6 +1,6 @@
 ﻿namespace TyreManagementAppOOP.Models
 {
-    public class Customer : ICustomer
+    public interface ICustomer
     {
         public int Id { get; set; }
 
@@ -17,5 +17,6 @@
         public string? Postcode { get; set; }
 
         public string? Phone { get; set; }
+
     }
 }

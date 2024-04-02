@@ -6,14 +6,14 @@ namespace TyreManagementAppOOP.Repositories
 {
     public class CustomerRepository
     {
-        public async Task<IEnumerable<Customer>> GetAllCustomerInformation()
+        public async Task<IEnumerable<ICustomer>> GetAllCustomerInformation()
         {
-            var query = ("SELECT * FROM Customer");
+            var query = "SELECT * FROM Customer";
 
             return await DatabaseConnection.Instance.ExecuteQueryAsync<Customer>(query);
         }
 
-        public async Task<bool> UpdateCustomer(Customer customer)
+        public async Task<bool> UpdateCustomer(ICustomer customer)
         {
             var query = @"
                 UPDATE Customer
@@ -45,7 +45,7 @@ namespace TyreManagementAppOOP.Repositories
             return false;
         }
 
-        public async Task<bool> AddNewCustomer(Customer customer)
+        public async Task<bool> AddNewCustomer(ICustomer customer)
         {
             var query = @"
                 INSERT INTO Customer (FirstName, LastName, HouseOrApartmentNum, Street, TownOrCity, Postcode, Phone)
@@ -66,10 +66,10 @@ namespace TyreManagementAppOOP.Repositories
             return await DatabaseConnection.Instance.ExecuteNonQueryAsync(query, parameters) > 0;
         }
 
-        public async Task<IEnumerable<Customer>> GetCustomerInformation(int id)
+        public async Task<IEnumerable<ICustomer>> GetCustomerInformation(int id)
         {
             // Parameterisation to prevent injection attacks
-            var query = ("SELECT * FROM Customer WHERE Id = @Id");
+            var query = "SELECT * FROM Customer WHERE Id = @Id";
             var idParam = new SqlParameter("Id", id);
 
             return await DatabaseConnection.Instance.ExecuteQueryAsync<Customer>(query, idParam);

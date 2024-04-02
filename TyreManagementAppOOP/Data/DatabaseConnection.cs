@@ -2,7 +2,6 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Data.Common;
-using TyreManagementAppOOP.Interfaces;
 using TyreManagementAppOOP.Models;
 
 namespace TyreManagementAppOOP.Data
@@ -101,7 +100,7 @@ namespace TyreManagementAppOOP.Data
         {
             var properties = typeof(T).GetProperties();
 
-            // For each field in the class T, map the name to the reade
+            // For each field in the class T, map the name to the reader
             foreach (var property in properties)
             {
                 if (HasColumn(reader, property.Name))

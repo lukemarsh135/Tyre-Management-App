@@ -8,7 +8,7 @@ namespace TyreManagementAppOOP.Repositories
     {
         public async Task<IEnumerable<Product>> GetAllProductsCombined()
         {
-            var query = ("SELECT * FROM Product");
+            var query = "SELECT * FROM Product";
 
             return await DatabaseConnection.Instance.ExecuteQueryAsync<Product>(query);
         }

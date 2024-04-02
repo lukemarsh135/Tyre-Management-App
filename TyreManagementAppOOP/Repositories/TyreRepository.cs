@@ -1,6 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using TyreManagementAppOOP.Data;
-using TyreManagementAppOOP.Interfaces;
 using TyreManagementAppOOP.Models;
 
 namespace TyreManagementAppOOP.Repositories

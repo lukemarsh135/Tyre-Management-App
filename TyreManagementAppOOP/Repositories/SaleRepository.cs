@@ -11,7 +11,6 @@ namespace TyreManagementAppOOP.Repositories
     {
         public async Task<bool> SaveSale(Sale sale)
         {
-            // total cost 
             try
             {
                 // Insert Sale record
@@ -22,9 +21,9 @@ namespace TyreManagementAppOOP.Repositories
 
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             
         }
@@ -37,9 +36,9 @@ namespace TyreManagementAppOOP.Repositories
 
             var parameters = new SqlParameter[]
             {
-            new SqlParameter("@customerId", sale.CustomerId),
-            new SqlParameter("@dateAndTime", sale.DateAndTime),
-            new SqlParameter("@totalCost", sale.TotalCost),
+                new SqlParameter("@customerId", sale.CustomerId),
+                new SqlParameter("@dateAndTime", sale.DateAndTime),
+                new SqlParameter("@totalCost", sale.TotalCost),
             };
 
             int result =  Convert.ToInt16(await DatabaseConnection.Instance.ExecuteScalarAsync(query, parameters));
@@ -56,8 +55,7 @@ namespace TyreManagementAppOOP.Repositories
         {
             var query = @"
             INSERT INTO TransactionItems (SaleId, ProductId, ProductName, IndividualPrice, Quantity, TotalPrice)
-            VALUES (@SaleId, @ProductId, @ProductName, @IndividualPrice, @Quantity, @TotalPrice);
-            ";
+            VALUES (@SaleId, @ProductId, @ProductName, @IndividualPrice, @Quantity, @TotalPrice);";
 
             foreach (var product in orderLine.Product)
             {
@@ -77,19 +75,19 @@ namespace TyreManagementAppOOP.Repositories
 
         public async Task<IEnumerable<CombinedTransaction>> GetAllTransactions()
         {
-            var query = ("SELECT t.*, ti.* " +
-               "FROM Transactions t " +
-               "INNER JOIN TransactionItems ti ON t.SaleId = ti.SaleId ");
+            var query = @"SELECT t.*, ti.*
+               FROM Transactions t 
+               INNER JOIN TransactionItems ti ON t.SaleId = ti.SaleId;";
 
             return await DatabaseConnection.Instance.ExecuteQueryAsync<CombinedTransaction>(query);
         }
 
         public async Task<IEnumerable<CombinedTransaction>> GetTransactionBySaleId(int id)
         {
-            var query = ("SELECT t.*, ti.* " +
-               "FROM Transactions t " +
-               "INNER JOIN TransactionItems ti ON t.SaleId = ti.SaleId " +
-               "WHERE t.SaleId = @Id");
+            var query = @"SELECT t.*, ti.* 
+               FROM Transactions t
+               INNER JOIN TransactionItems ti ON t.SaleId = ti.SaleId 
+               WHERE t.SaleId = @Id";
 
             // Parameterisation to prevent injection attacks
             var idParam = new SqlParameter("Id", id);
@@ -99,10 +97,10 @@ namespace TyreManagementAppOOP.Repositories
 
         public async Task<IEnumerable<CombinedTransaction>> GetTransactionByCustomer(int id)
         {
-            var query = ("SELECT t.*, ti.* " +
-               "FROM Transactions t " +
-               "INNER JOIN TransactionItems ti ON t.SaleId = ti.SaleId " +
-               "WHERE t.CustomerId = @Id");
+            var query = @"SELECT t.*, ti.* 
+               FROM Transactions t 
+               INNER JOIN TransactionItems ti ON t.SaleId = ti.SaleId
+               WHERE t.CustomerId = @Id";
 
             // Parameterisation to prevent injection attacks
             var idParam = new SqlParameter("Id", id);
